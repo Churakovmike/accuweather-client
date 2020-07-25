@@ -1,0 +1,31 @@
+{
+    "name": "churakovmike/accuweather-client",
+    "type": "library",
+    "description": "Accuweather php client",
+    "keywords": [
+        "accuweather",
+        "accuweather php",
+        "accuweather client",
+        "accuweather sdk"
+    ],
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Churakov Mike",
+            "email": "churakovmike@mail.ru",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ChurakovMike\\Accuweather\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
