@@ -32,6 +32,11 @@ use ChurakovMike\Accuweather\Actions\WeatherAlarm;
 class Client
 {
     /**
+     * Api host.
+     */
+    protected CONST API_HOST = "http://dataservice.accuweather.com";
+
+    /**
      * @var RequestApi
      */
     private $request;
@@ -80,6 +85,26 @@ class Client
      * @var WeatherAlarm
      */
     private $weatherAlarm;
+
+    /**
+     * Client constructor.
+     * @param array $config
+     */
+    public function __construct(array $config)
+    {
+        $this->loadConfig($config);
+        $this->request = new RequestApi(self::API_HOST);
+    }
+
+    /**
+     * @param array $config
+     */
+    public function loadConfig(array $config)
+    {
+        foreach ($config as $property => $value) {
+            $this->$property = $value;
+        }
+    }
 
     /**
      * @return Alert
