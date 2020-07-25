@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ChurakovMike\Accuweather\Client;
 
 use ChurakovMike\Accuweather\Actions\Alert;
+use ChurakovMike\Accuweather\Actions\BaseAction;
 use ChurakovMike\Accuweather\Actions\CurrentCondition;
 use ChurakovMike\Accuweather\Actions\Forecast;
 use ChurakovMike\Accuweather\Actions\Imagery;
@@ -19,6 +20,7 @@ use ChurakovMike\Accuweather\Actions\WeatherAlarm;
  * @package ChurakovMike\Accuweather\Client
  *
  * @property RequestApi $request
+ * @property string $apikey
  * @property Alert $alert
  * @property CurrentCondition $currentCondition
  * @property Forecast $forecast
@@ -40,6 +42,11 @@ class Client
      * @var RequestApi
      */
     private $request;
+
+    /**
+     * @var string
+     */
+    private $apikey;
 
     /**
      * @var Alert
@@ -107,6 +114,14 @@ class Client
     }
 
     /**
+     * @param string $key
+     */
+    public function setApikey(string $key): void
+    {
+        $this->apikey = $key;
+    }
+
+    /**
      * @return Alert
      */
     public function alert(): Alert
@@ -116,6 +131,14 @@ class Client
         }
 
         return $this->alert;
+    }
+
+    /**
+     * @param BaseAction $action
+     */
+    public function setAlertApiHandler(BaseAction $action): void
+    {
+        $this->alert = $action;
     }
 
     /**
@@ -131,6 +154,14 @@ class Client
     }
 
     /**
+     * @param BaseAction $action
+     */
+    public function setCurrentConditionApiHandler(BaseAction $action): void
+    {
+        $this->currentCondition = $action;
+    }
+
+    /**
      * @return Forecast
      */
     public function forecast(): Forecast
@@ -140,6 +171,14 @@ class Client
         }
 
         return $this->forecast;
+    }
+
+    /**
+     * @param BaseAction $action
+     */
+    public function setForecastApiHandler(BaseAction $action): void
+    {
+        $this->forecast = $action;
     }
 
     /**
@@ -155,6 +194,14 @@ class Client
     }
 
     /**
+     * @param BaseAction $action
+     */
+    public function setImageryApiHandler(BaseAction $action): void
+    {
+        $this->imagery = $action;
+    }
+
+    /**
      * @return Indices
      */
     public function indices(): Indices
@@ -164,6 +211,14 @@ class Client
         }
 
         return $this->indices;
+    }
+
+    /**
+     * @param BaseAction $action
+     */
+    public function setIndicesApiHandler(BaseAction $action): void
+    {
+        $this->indices = $action;
     }
 
     /**
@@ -179,6 +234,14 @@ class Client
     }
 
     /**
+     * @param BaseAction $action
+     */
+    public function setLocationApiHandler(BaseAction $action): void
+    {
+        $this->location = $action;
+    }
+
+    /**
      * @return Translation
      */
     public function translation(): Translation
@@ -188,6 +251,14 @@ class Client
         }
 
         return $this->translation;
+    }
+
+    /**
+     * @param BaseAction $action
+     */
+    public function setTranslationApiHandler(BaseAction $action): void
+    {
+        $this->translation = $action;
     }
 
     /**
@@ -203,6 +274,14 @@ class Client
     }
 
     /**
+     * @param BaseAction $action
+     */
+    public function setTropicalApiHandler(BaseAction $action): void
+    {
+        $this->tropical = $action;
+    }
+
+    /**
      * @return WeatherAlarm
      */
     public function weatherAlarm()
@@ -212,5 +291,13 @@ class Client
         }
 
         return $this->weatherAlarm;
+    }
+
+    /**
+     * @param BaseAction $action
+     */
+    public function setWeatherAlarmApiHandler(BaseAction $action): void
+    {
+        $this->weatherAlarm = $action;
     }
 }
