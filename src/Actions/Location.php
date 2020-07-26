@@ -21,6 +21,9 @@ final class Location extends BaseAction
      ***************************************************/
 
     /**
+     * Returns basic information about administrative areas in the specified country.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/adminareas/%7BcountryCode%7D
+     *
      * @param string $countryCode
      * @param string $language
      * @param int $offset
@@ -36,6 +39,9 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns basic information about all countries within a specified region.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/countries/%7BregionCode%7D
+     *
      * @param string $countryCode
      * @param string $language
      * @return stdClass
@@ -49,6 +55,9 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns basic information about all regions.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/regions
+     *
      * @param string $language
      * @return stdClass
      * @throws GuzzleException
@@ -61,6 +70,9 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns information for the top 50, 100, or 150 cities, worldwide.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/topcities/%7Bgroup%7D
+     *
      * @param string $group
      * @param string $language
      * @param bool $detail
@@ -80,6 +92,9 @@ final class Location extends BaseAction
      ***************************************************/
 
     /**
+     * Returns basic information about locations matching an autocomplete of the search text.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/autocomplete
+     *
      * @param string $q
      * @param string $language
      * @return stdClass
@@ -98,6 +113,9 @@ final class Location extends BaseAction
      ***************************************************/
 
     /**
+     * Returns information about neighboring cities, by location key. You must know the location key to perform this query.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/neighbors/%7BlocationKey%7D
+     *
      * @param string $locationKey
      * @param string $language
      * @param bool $details
@@ -113,6 +131,9 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns information about a specific location, by location key. You must know the location key to perform this query.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/%7BlocationKey%7D
+     *
      * @param string $locationKey
      * @param string $language
      * @param bool $details
@@ -128,10 +149,13 @@ final class Location extends BaseAction
     }
 
     /****************************************************
-     *                   City Search                    *
+     *                   Text Search                    *
      ***************************************************/
 
     /**
+     * Returns information for an array of cities that match the search text.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/search
+     *
      * @param string $q
      * @param string $language
      * @param bool $details
@@ -152,6 +176,9 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns information for an array of cities that match the search text.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/%7BcountryCode%7D/%7BadminCode%7D/search
+     *
      * @param string $countryCode
      * @param string $adminCode
      * @param string $q
@@ -181,6 +208,9 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns information for an array of cities that match the search text.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/%7BcountryCode%7D/search
+     *
      * @param string $countryCode
      * @param string $q
      * @param string $language
@@ -208,6 +238,9 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns information for an array of Points of Interest that match the search text.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/poi/search
+     *
      * @param string $q
      * @param int $type
      * @param string $language
@@ -226,6 +259,31 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns information for an array of Points of Interest that match the search text.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/poi/%7BcountryCode%7D/search
+     *
+     * @param string $countryCode
+     * @param string $q
+     * @param int $type
+     * @param string $language
+     * @param bool $details
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function poiSearchNarrowByCountryCode(string $countryCode, string $q, int $type, string $language, bool $details)
+    {
+        return $this->request->send("locations/v1/poi/{$countryCode}/search", [
+            'q' => $q,
+            'type' => $type,
+            'language' => $language,
+            'details' => $details,
+        ]);
+    }
+
+    /**
+     * Returns information for an array of Postal Codes that match the search text.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/postalcodes/search
+     *
      * @param string $q
      * @param string $language
      * @param bool $details
@@ -242,6 +300,9 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns information for an array of Postal Codes that match the search text.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/postalcodes/%7BcountryCode%7D/search
+     *
      * @param string $countryCode
      * @param string $q
      * @param string $language
@@ -259,6 +320,9 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns information for an array of locations that match the search text.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/search
+     *
      * @param string $q
      * @param string $language
      * @param bool $details
@@ -279,6 +343,10 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns information for an array of locations that match the search text.
+     * Results are narrowed by entering a countryCode and adminCode in the path.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/%7BcountryCode%7D/%7BadminCode%7D/search
+     *
      * @param string $countryCode
      * @param string $adminCode
      * @param string $q
@@ -308,6 +376,10 @@ final class Location extends BaseAction
     }
 
     /**
+     * Returns information for an array of locations that match the search text.
+     * Results are narrowed by entering a countryCode in the path.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/%7BcountryCode%7D/search
+     *
      * @param string $countryCode
      * @param string $q
      * @param string $language
@@ -338,11 +410,47 @@ final class Location extends BaseAction
      *                   Geoposition                    *
      ***************************************************/
 
-    public function geoPositionSearch() {}
+    /**
+     * Returns information about a specific location, by GeoPosition (Latitude and Longitude).
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/geoposition/search
+     *
+     * @param string $q
+     * @param string $language
+     * @param bool $details
+     * @param bool $topLevel
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function geoPositionSearch(string $q, string $language, bool $details = true, bool $topLevel = true)
+    {
+        return $this->request->send("locations/v1/cities/geoposition/search", [
+            'q' => $q,
+            'language' => $language,
+            'details' => $details,
+            'toplevel' => $topLevel,
+        ]);
+    }
 
     /****************************************************
      *                   IP Address                     *
      ***************************************************/
 
-    public function ipAddressSearch() {}
+    /**
+     * Returns information about a specific location, by IP Address.
+     * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/ipaddress
+     *
+     * @param string $q
+     * @param string $language
+     * @param bool $details
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function ipAddressSearch(string $q, string $language, bool $details = true)
+    {
+        return $this->request->send("locations/v1/cities/ipaddress", [
+            'q' => $q,
+            'language' => $language,
+            'details' => $details,
+        ]);
+    }
 }
