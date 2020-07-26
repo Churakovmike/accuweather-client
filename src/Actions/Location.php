@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace ChurakovMike\Accuweather\Actions;
 
 use ChurakovMike\Accuweather\Client\RequestApi;
+use stdClass;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * Class Location.
@@ -18,20 +20,60 @@ final class Location extends BaseAction
      *                   List methods                   *
      ***************************************************/
 
-    public function getAdminAreaList()
+    /**
+     * @param string $countryCode
+     * @param string $language
+     * @param int $offset
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function getAdminAreaList(string $countryCode, string $language, $offset = 0)
     {
-        return $this->request->send('locations/v1/adminareas/{countryCode}', [
-            'apikey' => '',
-            'language' => '',
-            'offset' => '',
+        return $this->request->send("locations/v1/adminareas/{$countryCode}", [
+            'language' => $language,
+            'offset' => $offset,
         ]);
     }
 
-    public function getCountryList() {}
+    /**
+     * @param string $countryCode
+     * @param string $language
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function getCountryList(string $countryCode, string $language)
+    {
+        return $this->request->send("locations/v1/countries/{$countryCode}", [
+            'language' => $language,
+        ]);
+    }
 
-    public function getRegionList() {}
+    /**
+     * @param string $language
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function getRegionList(string $language)
+    {
+        return $this->request->send('locations/v1/regions', [
+            'language' => $language,
+        ]);
+    }
 
-    public function getTopCitiesList() {}
+    /**
+     * @param string $group
+     * @param string $language
+     * @param bool $detail
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function getTopCitiesList(string $group, string $language, bool $detail = true)
+    {
+        return $this->request->send("locations/v1/topcities/{$group}", [
+            'language' => $language,
+            'details' => $detail,
+        ]);
+    }
 
     /****************************************************
      *                   Autocomplete                   *

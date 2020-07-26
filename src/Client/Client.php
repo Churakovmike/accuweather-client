@@ -100,7 +100,15 @@ class Client
     public function __construct(array $config)
     {
         $this->loadConfig($config);
-        $this->request = new RequestApi(self::API_HOST);
+        $this->request = new RequestApi(self::API_HOST, $this->getApiKey());
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return "{$this->apikey}";
     }
 
     /**
@@ -111,6 +119,18 @@ class Client
         foreach ($config as $property => $value) {
             $this->$property = $value;
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiKey(): string
+    {
+        if (!$this->apikey) {
+            return '';
+        }
+
+        return $this->apikey;
     }
 
     /**

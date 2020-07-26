@@ -12,6 +12,7 @@ use stdClass;
  *
  * @property string $host
  * @property Client $http_client
+ * @property string $apiKey
  */
 class RequestApi
 {
@@ -29,16 +30,23 @@ class RequestApi
     private $http_client;
 
     /**
+     * @var string
+     */
+    private $apiKey;
+
+    /**
      * RequestApi constructor.
      * @param string $host
+     * @param string $apiKey
      */
-    public function __construct(string $host)
+    public function __construct(string $host, string $apiKey)
     {
         $this->http_client = new Client([
             'base_uri' => $host,
             'timeout' => static::CONNECTION_TIMEOUT,
         ]);
 
+        $this->apiKey = $apiKey;
         $this->host = $host;
     }
 
@@ -49,8 +57,9 @@ class RequestApi
      * @return stdClass
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function send(string $path, array $params = [], string $method = 'get'): stdClass
+    public function send(string $path, array $params = [], string $method = 'get')
     {
+        $params['apikey'] = $this->apiKey;
         $rowData = http_build_query($params);
         $response = $this->http_client->request($method, $path, [
             'query' => $rowData

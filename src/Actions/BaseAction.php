@@ -15,7 +15,7 @@ abstract class BaseAction
     /**
      * @var RequestApi
      */
-    private $request;
+    protected $request;
 
     /**
      * BaseAction constructor.
