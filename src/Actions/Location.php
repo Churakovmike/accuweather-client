@@ -79,15 +79,53 @@ final class Location extends BaseAction
      *                   Autocomplete                   *
      ***************************************************/
 
-    public function autocompleteSearch() {}
+    /**
+     * @param string $q
+     * @param string $language
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function autocompleteSearch(string $q, string $language)
+    {
+        return $this->request->send('locations/v1/cities/autocomplete', [
+            'q' => $q,
+            'language' => $language,
+        ]);
+    }
 
     /****************************************************
      *                   Location Key                   *
      ***************************************************/
 
-    public function getCityNeighborsByLocationKey() {}
+    /**
+     * @param string $locationKey
+     * @param string $language
+     * @param bool $details
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function getCityNeighborsByLocationKey(string $locationKey, string $language, bool $details)
+    {
+        return $this->request->send("locations/v1/cities/neighbors/{$locationKey}", [
+            'language' => $language,
+            'details' => $details,
+        ]);
+    }
 
-    public function searchByLocationKey() {}
+    /**
+     * @param string $locationKey
+     * @param string $language
+     * @param bool $details
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function searchByLocationKey(string $locationKey, string $language, bool $details)
+    {
+        return $this->request->send("locations/v1/{$locationKey}" , [
+            'language' => $language,
+            'details' => $details,
+        ]);
+    }
 
     /****************************************************
      *                   City Search                    *
