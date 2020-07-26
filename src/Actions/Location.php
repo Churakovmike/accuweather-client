@@ -27,7 +27,7 @@ final class Location extends BaseAction
      * @return stdClass
      * @throws GuzzleException
      */
-    public function getAdminAreaList(string $countryCode, string $language, $offset = 0)
+    public function getAdminAreaList(string $countryCode, string $language, int $offset = 0)
     {
         return $this->request->send("locations/v1/adminareas/{$countryCode}", [
             'language' => $language,
@@ -131,23 +131,208 @@ final class Location extends BaseAction
      *                   City Search                    *
      ***************************************************/
 
-    public function citySearch() {}
+    /**
+     * @param string $q
+     * @param string $language
+     * @param bool $details
+     * @param int $offset
+     * @param string $alias
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function citySearch(string $q, string $language, bool $details, int $offset, string $alias)
+    {
+        return $this->request->send("locations/v1/cities/search", [
+            'q' => $q,
+            'language' => $language,
+            'details' => $details,
+            'offset' => $offset,
+            'alias' => $alias,
+        ]);
+    }
 
-    public function citySearchNarrow() {}
+    /**
+     * @param string $countryCode
+     * @param string $adminCode
+     * @param string $q
+     * @param string $language
+     * @param bool $details
+     * @param int $offset
+     * @param string $alias
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function citySearchNarrow(
+        string $countryCode,
+        string $adminCode,
+        string $q,
+        string $language,
+        bool $details,
+        int $offset,
+        string $alias
+    ) {
+        return $this->request->send("locations/v1/cities/{$countryCode}/{$adminCode}/search", [
+            'q' => $q,
+            'language' => $language,
+            'details' => $details,
+            'offset' => $offset,
+            'alias' => $alias,
+        ]);
+    }
 
-    public function citySearchNarrowByCountryCode() {}
+    /**
+     * @param string $countryCode
+     * @param string $q
+     * @param string $language
+     * @param bool $details
+     * @param int $offset
+     * @param string $alias
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function citySearchNarrowByCountryCode(
+        string $countryCode,
+        string $q,
+        string $language,
+        bool $details,
+        int $offset,
+        string $alias
+    ) {
+        return $this->request->send("locations/v1/cities/{$countryCode}/search", [
+            'q' => $q,
+            'language' => $language,
+            'details' => $details,
+            'offset' => $offset,
+            'alias' => $alias,
+        ]);
+    }
 
-    public function poiSearch() {}
+    /**
+     * @param string $q
+     * @param int $type
+     * @param string $language
+     * @param bool $details
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function poiSearch(string $q, int $type, string $language, bool $details)
+    {
+        return $this->request->send("locations/v1/poi/search", [
+            'q' => $q,
+            'type' => $type,
+            'language' => $language,
+            'details' => $details,
+        ]);
+    }
 
-    public function postalCodeSearch() {}
+    /**
+     * @param string $q
+     * @param string $language
+     * @param bool $details
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function postalCodeSearch(string $q, string $language, bool $details)
+    {
+        return $this->request->send("locations/v1/postalcodes/search", [
+            'q' => $q,
+            'language' => $language,
+            'details' => $details,
+        ]);
+    }
 
-    public function postalCodeSearchNarrowByCountryCode() {}
+    /**
+     * @param string $countryCode
+     * @param string $q
+     * @param string $language
+     * @param bool $details
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function postalCodeSearchNarrowByCountryCode(string $countryCode, string $q, string $language, bool $details)
+    {
+        return $this->request->send("locations/v1/postalcodes/{$countryCode}/search", [
+            'q' => $q,
+            'language' => $language,
+            'details' => $details,
+        ]);
+    }
 
-    public function textSearch() {}
+    /**
+     * @param string $q
+     * @param string $language
+     * @param bool $details
+     * @param int $offset
+     * @param string $alias
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function textSearch(string $q, string $language, bool $details, int $offset, string $alias)
+    {
+        return $this->request->send("locations/v1/search", [
+            'q' => $q,
+            'language' => $language,
+            'details' => $details,
+            'offset' => $offset,
+            'alias' => $alias,
+        ]);
+    }
 
-    public function textSearchNarrow() {}
+    /**
+     * @param string $countryCode
+     * @param string $adminCode
+     * @param string $q
+     * @param string $language
+     * @param bool $details
+     * @param int $offset
+     * @param string $alias
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function textSearchNarrow(
+        string $countryCode,
+        string $adminCode,
+        string $q,
+        string $language,
+        bool $details,
+        int $offset,
+        string $alias
+    ) {
+        return $this->request->send("locations/v1/{$countryCode}/{$adminCode}/search", [
+            'q' => $q,
+            'language' => $language,
+            'details' => $details,
+            'offset' => $offset,
+            'alias' => $alias,
+        ]);
+    }
 
-    public function textSearchNarrowByCountryCode() {}
+    /**
+     * @param string $countryCode
+     * @param string $q
+     * @param string $language
+     * @param bool $details
+     * @param int $offset
+     * @param string $alias
+     * @return stdClass
+     * @throws GuzzleException
+     */
+    public function textSearchNarrowByCountryCode(
+        string $countryCode,
+        string $q,
+        string $language,
+        bool $details,
+        int $offset,
+        string $alias
+    ) {
+        return $this->request->send("locations/v1/{$countryCode}/search", [
+            'q' => $q,
+            'language' => $language,
+            'details' => $details,
+            'offset' => $offset,
+            'alias' => $alias,
+        ]);
+    }
 
     /****************************************************
      *                   Geoposition                    *
