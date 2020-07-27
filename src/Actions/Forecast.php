@@ -33,7 +33,7 @@ final class Forecast extends BaseAction
      * @return \stdClass
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getOneDayForecast(string $countryCode, string $language, bool $details, bool $metric)
+    public function get1DayForecast(string $countryCode, string $language, bool $details, bool $metric)
     {
         return $this->request->send("forecasts/v1/daily/1day/{$countryCode}", [
             'language' => $language,
@@ -57,7 +57,7 @@ final class Forecast extends BaseAction
      * @return \stdClass
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getTenDaysForecast(string $countryCode, string $language, bool $details, bool $metric)
+    public function get10DaysForecast(string $countryCode, string $language, bool $details, bool $metric)
     {
         return $this->request->send("forecasts/v1/daily/10day/{$countryCode}", [
             'language' => $language,
@@ -81,7 +81,7 @@ final class Forecast extends BaseAction
      * @return \stdClass
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getFifTeenDaysForecast(string $countryCode, string $language, bool $details, bool $metric)
+    public function get15DaysForecast(string $countryCode, string $language, bool $details, bool $metric)
     {
         return $this->request->send("forecasts/v1/daily/15day/{$countryCode}", [
             'language' => $language,
@@ -105,9 +105,27 @@ final class Forecast extends BaseAction
      * @return \stdClass
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getFiveDaysForecast(string $countryCode, string $language, bool $details, bool $metric)
+    public function get5DaysForecast(string $countryCode, string $language, bool $details, bool $metric)
     {
         return $this->request->send("forecasts/v1/daily/5day/{$countryCode}", [
+            'language' => $language,
+            'details' => $details,
+            'metric' => $metric,
+        ]);
+    }
+
+    /**
+     * @param int $daysCount
+     * @param string $countryCode
+     * @param string $language
+     * @param bool $details
+     * @param bool $metric
+     * @return \stdClass
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getDaily(int $daysCount ,string $countryCode, string $language, bool $details, bool $metric)
+    {
+        return $this->request->send("forecasts/v1/daily/{$daysCount}day/{$countryCode}", [
             'language' => $language,
             'details' => $details,
             'metric' => $metric,
@@ -232,6 +250,24 @@ final class Forecast extends BaseAction
     public function get72HoursForecast(string $countryCode, string $language, bool $details, bool $metric)
     {
         return $this->request->send("forecasts/v1/hourly/72hour/{$countryCode}", [
+            'language' => $language,
+            'details' => $details,
+            'metric' => $metric,
+        ]);
+    }
+
+    /**
+     * @param int $hoursCount
+     * @param string $countryCode
+     * @param string $language
+     * @param bool $details
+     * @param bool $metric
+     * @return \stdClass
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getHoursForecast(int $hoursCount, string $countryCode, string $language, bool $details, bool $metric)
+    {
+        return $this->request->send("forecasts/v1/hourly/{$hoursCount}hour/{$countryCode}", [
             'language' => $language,
             'details' => $details,
             'metric' => $metric,
