@@ -118,5 +118,123 @@ final class Forecast extends BaseAction
      *                   Hourly                         *
      ***************************************************/
 
+    /**
+     * Returns forecast data for the next hour for a specific location.
+     * Forecast searches require a location key.
+     * Please use the Locations API to obtain the location key for your desired location.
+     * By default, a truncated version of the hourly forecast data is returned.
+     * The full object can be obtained by passing "details=true" into the url string.
+     * @see https://developer.accuweather.com/accuweather-forecast-api/apis/get/forecasts/v1/hourly/1hour/%7BlocationKey%7D
+     *
+     * @param string $countryCode
+     * @param string $language
+     * @param bool $details
+     * @param bool $metric
+     * @return \stdClass
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function get1HourForecast(string $countryCode, string $language, bool $details, bool $metric)
+    {
+        return $this->request->send("forecasts/v1/hourly/1hour/{$countryCode}", [
+            'language' => $language,
+            'details' => $details,
+            'metric' => $metric,
+        ]);
+    }
 
+    /**
+     * Returns an array of hourly forecasts for the next 12 hours for a specific location.
+     * Forecast searches require a location key.
+     * Please use the Locations API to obtain the location key for your desired location.
+     * By default, a truncated version of the hourly forecast data is returned.
+     * The full object can be obtained by passing "details=true" into the url string.
+     * @see https://developer.accuweather.com/accuweather-forecast-api/apis/get/forecasts/v1/hourly/12hour/%7BlocationKey%7D
+     *
+     * @param string $countryCode
+     * @param string $language
+     * @param bool $details
+     * @param bool $metric
+     * @return \stdClass
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function get12HoursForecast(string $countryCode, string $language, bool $details, bool $metric)
+    {
+        return $this->request->send("forecasts/v1/hourly/12hour/{$countryCode}", [
+            'language' => $language,
+            'details' => $details,
+            'metric' => $metric,
+        ]);
+    }
+
+    /**
+     * Returns an array of hourly forecasts for the next 120 hours for a specific location.
+     * Forecast searches require a location key.
+     * Please use the Locations API to obtain the location key for your desired location.
+     * By default, a truncated version of the hourly forecast data is returned.
+     * The full object can be obtained by passing "details=true" into the url string.
+     * @see https://developer.accuweather.com/accuweather-forecast-api/apis/get/forecasts/v1/hourly/120hour/%7BlocationKey%7D
+     *
+     * @param string $countryCode
+     * @param string $language
+     * @param bool $details
+     * @param bool $metric
+     * @return \stdClass
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function get120HoursForecast(string $countryCode, string $language, bool $details, bool $metric)
+    {
+        return $this->request->send("forecasts/v1/hourly/120hour/{$countryCode}", [
+            'language' => $language,
+            'details' => $details,
+            'metric' => $metric,
+        ]);
+    }
+
+    /**
+     *  Returns an array of hourly forecasts for the next 24 hours for a specific location.
+     * Forecast searches require a location key.
+     * Please use the Locations API to obtain the location key for your desired location.
+     * By default, a truncated version of the hourly forecast data is returned.
+     * The full object can be obtained by passing "details=true" into the url string.
+     * @see https://developer.accuweather.com/accuweather-forecast-api/apis/get/forecasts/v1/hourly/24hour/%7BlocationKey%7D
+     *
+     * @param string $countryCode
+     * @param string $language
+     * @param bool $details
+     * @param bool $metric
+     * @return \stdClass
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function get24HoursForecast(string $countryCode, string $language, bool $details, bool $metric)
+    {
+        return $this->request->send("forecasts/v1/hourly/24hour/{$countryCode}", [
+            'language' => $language,
+            'details' => $details,
+            'metric' => $metric,
+        ]);
+    }
+
+    /**
+     * Returns an array of hourly forecasts for the next 72 hours for a specific location.
+     * Forecast searches require a location key.
+     * Please use the Locations API to obtain the location key for your desired location.
+     * By default, a truncated version of the hourly forecast data is returned.
+     * The full object can be obtained by passing "details=true" into the url string.
+     * @see https://developer.accuweather.com/accuweather-forecast-api/apis/get/forecasts/v1/hourly/72hour/%7BlocationKey%7D
+     *
+     * @param string $countryCode
+     * @param string $language
+     * @param bool $details
+     * @param bool $metric
+     * @return \stdClass
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function get72HoursForecast(string $countryCode, string $language, bool $details, bool $metric)
+    {
+        return $this->request->send("forecasts/v1/hourly/72hour/{$countryCode}", [
+            'language' => $language,
+            'details' => $details,
+            'metric' => $metric,
+        ]);
+    }
 }
