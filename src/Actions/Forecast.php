@@ -123,7 +123,7 @@ final class Forecast extends BaseAction
      * @return \stdClass
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getDaily(int $daysCount ,string $countryCode, string $language, bool $details, bool $metric)
+    public function getDaily(int $daysCount, string $countryCode, string $language, bool $details, bool $metric)
     {
         return $this->request->send("forecasts/v1/daily/{$daysCount}day/{$countryCode}", [
             'language' => $language,

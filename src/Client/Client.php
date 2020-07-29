@@ -36,7 +36,7 @@ class Client
     /**
      * Api host.
      */
-    protected CONST API_HOST = "http://dataservice.accuweather.com";
+    protected const API_HOST = "http://dataservice.accuweather.com";
 
     /**
      * @var RequestApi

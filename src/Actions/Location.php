@@ -142,7 +142,7 @@ final class Location extends BaseAction
      */
     public function searchByLocationKey(string $locationKey, string $language, bool $details)
     {
-        return $this->request->send("locations/v1/{$locationKey}" , [
+        return $this->request->send("locations/v1/{$locationKey}", [
             'language' => $language,
             'details' => $details,
         ]);

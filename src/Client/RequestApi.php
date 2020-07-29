@@ -16,8 +16,8 @@ use stdClass;
  */
 class RequestApi
 {
-    protected CONST CONNECTION_TIMEOUT = 10;
-    protected CONST HTTP_STATUS_CODE = 200;
+    protected const CONNECTION_TIMEOUT = 10;
+    protected const HTTP_STATUS_CODE = 200;
 
     /**
      * @var string $host
