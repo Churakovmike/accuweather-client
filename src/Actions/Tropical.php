@@ -22,6 +22,63 @@ final class Tropical extends BaseAction
      *                   Position                       *
      ***************************************************/
 
+    /**
+     * Returns all position information for a specific tropical cyclone or list of tropical cyclones.
+     * @see https://developer.accuweather.com/accuweather-tropical-api/apis/get/tropical/%7Bversion%7D/gov/storms/%7Byyyy%7D/%7BbasinID%7D/%7BgovernmentID%7D/positions
+     *
+     * @param string $year
+     * @param int $basinId
+     * @param int $governmentId
+     * @param bool $details
+     * @param bool $geometry
+     * @param bool $includeLandmarks
+     * @return \stdClass
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getStormPosition(
+        string $year,
+        int $basinId,
+        int $governmentId,
+        bool $details = false,
+        bool $geometry = false,
+        bool $includeLandmarks = false
+    ) {
+        return $this->request->send("tropical/v1/gov/storms/{$year}/{$basinId}/{$governmentId}/positions", [
+            'details' => $details,
+            'radiigeometry' => $geometry,
+            'includeLandmarks' => $includeLandmarks,
+        ]);
+    }
+
+    /**
+     * Returns current (most recently recorded) position information for a specific tropical cyclone.
+     * For historical storms, the last observed position is shown.
+     * @see https://developer.accuweather.com/accuweather-tropical-api/apis/get/tropical/v1/gov/storms/%7Byyyy%7D/%7BbasinID%7D/%7BgovernmentID%7D/positions/current
+     *
+     * @param string $year
+     * @param int $basinId
+     * @param int $governmentId
+     * @param bool $details
+     * @param bool $geometry
+     * @param bool $includeLandmarks
+     * @return \stdClass
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getStormCurrentPosition(
+        string $year,
+        int $basinId,
+        int $governmentId,
+        bool $details = false,
+        bool $geometry = false,
+        bool $includeLandmarks = false
+    ) {
+        return $this->request->send("tropical/v1/gov/storms/{$year}/{$basinId}/{$governmentId}/positions/current", [
+            'details' => $details,
+            'radiigeometry' => $geometry,
+            'includeLandmarks' => $includeLandmarks,
+        ]);
+    }
+
     /****************************************************
      *                   Forecast                       *
      ***************************************************/
