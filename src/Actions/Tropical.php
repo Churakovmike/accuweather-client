@@ -18,6 +18,70 @@ final class Tropical extends BaseAction
      *                   Search                         *
      ***************************************************/
 
+    /**
+     * Returns basic information about tropical cyclones that are currently active in the specified basin.
+     * @see https://developer.accuweather.com/accuweather-tropical-api/apis/get/tropical/v1/gov/storms/active/%7BbasinID%7D/%7BgovernmentID%7D
+     *
+     * @param int $basinID
+     * @param int $governmentId
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getActiveStormSpecify(int $basinID, int $governmentId)
+    {
+        $this->request->send("tropical/v1/gov/storms/active/{$basinID}/{$governmentId}");
+    }
+
+    /**
+     * Returns basic information about tropical cyclones  that are currrently active.
+     * @see https://developer.accuweather.com/accuweather-tropical-api/apis/get/tropical/v1/gov/storms/active
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getActiveStorm()
+    {
+        $this->request->send("tropical/v1/gov/storms/active");
+    }
+
+    /**
+     * Returns basic information about tropical cyclones for a specific year and basin.
+     * @see https://developer.accuweather.com/accuweather-tropical-api/apis/get/tropical/v1/gov/storms/%7Byyyy%7D/%7BbasinID%7D
+     *
+     * @param string $year
+     * @param int $basinId
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function search(string $year, int $basinId)
+    {
+        $this->request->send("tropical/v1/gov/storms/{$year}/{$basinId}");
+    }
+
+    /**
+     * Returns basic information about a specific government issued tropical cyclone.
+     * @see https://developer.accuweather.com/accuweather-tropical-api/apis/get/tropical/v1/gov/storms/%7Byyyy%7D/%7BbasinID%7D/%7BgovernmentID%7D
+     *
+     * @param string $year
+     * @param int $basinId
+     * @param int $governmentId
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function extendedSearch(string $year, int $basinId, int $governmentId)
+    {
+        $this->request->send("tropical/v1/gov/storms/{$year}/{$basinId}/{$governmentId}");
+    }
+
+    /**
+     * Returns basic information about tropical cyclones that are currently active in the specified basin.
+     * @see https://developer.accuweather.com/accuweather-tropical-api/apis/get/tropical/v1/gov/storms/active/%7BbasinId%7D
+     *
+     * @param int $basinId
+     * @return \stdClass
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getStormByBasinId(int $basinId)
+    {
+        return $this->request->send("tropical/v1/gov/storms/active/{$basinId}");
+    }
+
     /****************************************************
      *                   Position                       *
      ***************************************************/
