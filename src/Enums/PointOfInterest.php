@@ -41,7 +41,7 @@ class PointOfInterest extends Enum
     private const NATURE_PRESERVE = 29;
     private const STATE_PARK = 30;
     private const WATERFALL = 31;
-    private const Bridge = 32;
+    private const BRIDGE = 32;
     private const HISTORIC = 33;
     private const MONUMENT_STATUE = 34;
     private const MUSEUM = 35;
