@@ -19,8 +19,9 @@
     ],
     "require": {
         "php": ">=7.0",
+        "ext-json": "*",
         "guzzlehttp/guzzle": "^7.0",
-        "ext-json": "*"
+        "myclabs/php-enum": "^1.7"
     },
     "autoload": {
         "psr-4": {
