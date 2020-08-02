@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ChurakovMike\Accuweather\Actions;
 
 use ChurakovMike\Accuweather\Client\RequestApi;
+use ChurakovMike\Accuweather\src\Enums\PointOfInterest;
 use stdClass;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -242,17 +243,17 @@ final class Location extends BaseAction
      * @see https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/poi/search
      *
      * @param string $q
-     * @param int $type
+     * @param PointOfInterest $poi
      * @param string $language
      * @param bool $details
      * @return stdClass
      * @throws GuzzleException
      */
-    public function poiSearch(string $q, int $type, string $language, bool $details)
+    public function poiSearch(string $q, PointOfInterest $poi, string $language, bool $details)
     {
         return $this->request->send("locations/v1/poi/search", [
             'q' => $q,
-            'type' => $type,
+            'type' => $poi,
             'language' => $language,
             'details' => $details,
         ]);
