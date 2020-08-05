@@ -97,7 +97,7 @@ class Client
      * Client constructor.
      * @param array $config
      */
-    public function __construct(array $config)
+    public function __construct(array $config = [])
     {
         $this->loadConfig($config);
         $this->request = new RequestApi(self::API_HOST, $this->getApiKey());
