@@ -37,7 +37,48 @@ $client->setApikey('your-api-key');
 Methods
 ----------------------------------------
 <details>
-<summary>Test dropdown</summary>
+<summary>Alert</summary>
 <br>
-Dropdown content.
+Alert methods.
 </details>
+<details>
+<summary>Current condition</summary>
+<br>
+Current condition methods.
+</details>
+<details>
+<summary>Forecast</summary>
+<br>
+Forecast methods.
+</details>
+<details>
+<summary>Imagery</summary>
+<br>
+Imagery methods.
+</details>
+<details>
+<summary>Indices</summary>
+<br>
+Indices methods.
+</details>
+<details>
+<summary>Location</summary>
+<br>
+Location methods.
+</details>
+<details>
+<summary>Translation</summary>
+<br>
+Translation methods.
+</details>
+<details>
+<summary>Tropical</summary>
+<br>
+Tropical methods.
+</details>
+<details>
+<summary>Weather alarm</summary>
+<br>
+Weather alarm methods.
+</details>
+
