@@ -39,7 +39,15 @@ Methods
 <details>
 <summary>Alert</summary>
 <br>
+### Alerts by LocationKey.
+#### Returns alert data for a specific location. Alert searches require a location key. Please use the Locations API to obtain the location key for your desired location. By default, a truncated version of the alert data is returned. The full object can be obtained by passing "details=true" into the url string.
+```php
+$client->alert()->get($countryCode, $language, $details);
+```
+
 Alert methods.
+
+
 </details>
 <details>
 <summary>Current condition</summary>
