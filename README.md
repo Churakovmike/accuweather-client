@@ -52,16 +52,76 @@ API Reference
 
 #### Tropical API
 
+- Active government-issued storms by basin ID and government ID
+
+```php
+$client->tropical()->getActiveStormSpecify($basinID, $governmentId);
+```
+
+- Active government-issued storms
+
+```php
+$client->tropical()->getActiveStorm();
+```
+
+- Search government-issued storms by year and basin ID
+
+```php
+$client->tropical()->search($year, $basinId);
+```
+
+- Search government-issued storms by year, basin ID, and government ID
+
+```php
+$client->tropical()->extendedSearch($year, $basinId, $governmentId);
+```
+
+- Active government-issued storms by basin ID
+
+```php
+$client->tropical()->getStormByBasinId($basinId);
+```
+
+- Positions for an individual government-issued storm
+
+```php
+$client->tropical()->getStormPosition($year, $basinId, $governmentId, $details, $geometry, $includeLandmarks);
+```
+
+- Current position for an individual government-issued storm
+
+```php
+$client->tropical()->getStormCurrentPosition($year, $basinId, $governmentId, $details, $geometry, $includeLandmarks);
+```
+
+- Government-issued forecasts
+
+```php
+$client->tropical()->getGovernmentForecast($year, $basinId, $governmentId, $details, $geometry, $windowGeometry);
+```
+
+- Tropical cyclone forecasts (deprecated)
+
+```php
+$client->tropical()->getCycloneForecast($year, $basinId, $depressionId);
+```
+
 #### Translations API
-1. List all Languages - Returns metadata for all languages.
+
+- List all Languages - Returns metadata for all languages.
+
 ```php
 $client->translation()->getLanguages();
 ```
-1. List of Available Translation Groups - Lists groups of phrases that are available for translation.
+
+- List of Available Translation Groups - Lists groups of phrases that are available for translation.
+
 ```php
 $client->translation()->getTranslationGroups();
 ```
-1. List of Translations for a Specific Group - Returns all translated phrases for a specific group, in the desired language.
+
+- List of Translations for a Specific Group - Returns all translated phrases for a specific group, in the desired language.
+
 ```php
 $client->translation()->getTranslationByGroup();
 ```
