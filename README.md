@@ -34,59 +34,34 @@ $client = new Client();
 $client->setApikey('your-api-key');
 ```
 
-Methods
+API Reference
 ----------------------------------------
-<details>
-<summary>Alert</summary>
-<br>
-### Alerts by LocationKey.
-#### Returns alert data for a specific location. Alert searches require a location key. Please use the Locations API to obtain the location key for your desired location. By default, a truncated version of the alert data is returned. The full object can be obtained by passing "details=true" into the url string.
+#### Locations API
+
+#### Forecast API
+
+#### Current Conditions API
+
+#### Indices API
+
+#### Weather Alarms API
+
+#### Alerts API
+
+#### Imagery API
+
+#### Tropical API
+
+#### Translations API
+1. List all Languages - Returns metadata for all languages.
 ```php
-$client->alert()->get($countryCode, $language, $details);
+$client->translation()->getLanguages();
 ```
-
-Alert methods.
-
-
-</details>
-<details>
-<summary>Current condition</summary>
-<br>
-Current condition methods.
-</details>
-<details>
-<summary>Forecast</summary>
-<br>
-Forecast methods.
-</details>
-<details>
-<summary>Imagery</summary>
-<br>
-Imagery methods.
-</details>
-<details>
-<summary>Indices</summary>
-<br>
-Indices methods.
-</details>
-<details>
-<summary>Location</summary>
-<br>
-Location methods.
-</details>
-<details>
-<summary>Translation</summary>
-<br>
-Translation methods.
-</details>
-<details>
-<summary>Tropical</summary>
-<br>
-Tropical methods.
-</details>
-<details>
-<summary>Weather alarm</summary>
-<br>
-Weather alarm methods.
-</details>
-
+1. List of Available Translation Groups - Lists groups of phrases that are available for translation.
+```php
+$client->translation()->getTranslationGroups();
+```
+1. List of Translations for a Specific Group - Returns all translated phrases for a specific group, in the desired language.
+```php
+$client->translation()->getTranslationByGroup();
+```
