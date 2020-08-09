@@ -46,7 +46,37 @@ API Reference
 
 #### Weather Alarms API
 
+- 1 Day of Weather Alarms
+
+```php
+$client->weatherAlarm()->get1day($countryCode, $language);
+```
+
+- 10 Days of Weather Alarms
+
+```php
+$client->weatherAlarm()->get10day($countryCode, $language);
+```
+
+- GET15 Days of Weather Alarms
+
+```php
+$client->weatherAlarm()->get15day($countryCode, $language);
+```
+
+- GET5 Days of Weather Alarms
+
+```php
+$client->weatherAlarm()->get5day($countryCode, $language);
+```
+
 #### Alerts API
+
+- Alerts by LocationKey
+
+```php
+$client->alert()->get($countryCode, $language, $details);
+```
 
 #### Imagery API
 
