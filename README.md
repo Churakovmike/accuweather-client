@@ -42,6 +42,30 @@ API Reference
 
 #### Current Conditions API
 
+- Current Conditions
+
+```php
+$client->currentCondition()->get($countryCode, $language, $details);
+```
+
+- Current Conditions for Top Cities
+
+```php
+$client->getTopCitiesCondition()->get($group, $language);
+```
+
+- Historical Current Conditions (past 24 hours)
+
+```php
+$client->getHistorical()->get($countryCode, $language, $details);
+```
+
+- GETHistorical Current Conditions (past 6 hours)
+
+```php
+$client->getHistoricalPast()->get($countryCode, $language, $details);
+```
+
 #### Indices API
 
 #### Weather Alarms API
