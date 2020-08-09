@@ -50,6 +50,12 @@ API Reference
 
 #### Imagery API
 
+- GETRadar and Satellite Imagery
+
+```php
+$client->imagery()->get($resolution, $countryCode, $language);
+```
+
 #### Tropical API
 
 - Active government-issued storms by basin ID and government ID
